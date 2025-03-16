@@ -3,6 +3,7 @@ import styles from './Navbar.module.css';
 import MoonIcon from '../../assets/Moonicon.png';
 import SunIcon from '../../assets/Sunicon.png';
 import SearchIcon from '../../assets/Searchicon.png';
+import IslamicLogo from '../../assets/IslamicLogo.png';
 
 const Navbar = () => {
   // Initialize dark mode from localStorage or default to false
@@ -42,8 +43,8 @@ const Navbar = () => {
       <div className={styles.topNavbar}>
         <div className={styles.topNavbarLeft}>
           <div className={styles.logo}>
-            <img src="/logo.svg" alt="Logo" />
-            <span>Your Docs</span>
+            <img src={IslamicLogo} alt="Logo" />
+            <span>Islam docs</span>
           </div>
           <button className={styles.mobileMenuButton} onClick={toggleMobileMenu}>
             <span>☰</span>
@@ -51,7 +52,7 @@ const Navbar = () => {
         </div>
         <div className={styles.topNavbarRight}>
           <div className={styles.searchBar}>
-            <input type="text" placeholder="Search documentation..." />
+            <input type="text" placeholder="Search docs..." />
             <button className={styles.searchButton}>
               <img 
                 src={SearchIcon} 
