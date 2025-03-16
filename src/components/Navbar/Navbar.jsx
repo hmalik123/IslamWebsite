@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import MoonIcon from '../../assets/Moonicon.png';
 import SunIcon from '../../assets/Sunicon.png';
 import SearchIcon from '../../assets/Searchicon.png';
 import IslamicLogo from '../../assets/IslamicLogo.png';
+import ProphetTimeline from '../ProphetTimeline/Prophettimeline';
 
 const Navbar = () => {
   // Initialize dark mode from localStorage or default to false
@@ -80,38 +82,32 @@ const Navbar = () => {
       <div className={`${styles.sideNavbar} ${mobileMenuOpen ? styles.mobileOpen : ''}`}>
         <nav>
           <div className={styles.navSection}>
-            <h3>Getting Started</h3>
+            <h3>What is Islam ?</h3>
             <ul>
-              <li className={styles.active}><a href="/introduction">Introduction</a></li>
-              <li><a href="/installation">Installation</a></li>
+              <li className={styles.active}><a href="/introduction">Abrahamic Religion</a></li>
+              <li><a href="/installation">Islam demographics</a></li>
               <li><a href="/quick-start">Quick Start</a></li>
             </ul>
           </div>
 
           <div className={styles.navSection}>
-            <h3>Core Concepts</h3>
+            <h3>Core beliefs</h3>
             <ul>
               <li><a href="/concepts/architecture">Architecture</a></li>
-              <li><a href="/concepts/components">Components</a></li>
-              <li><a href="/concepts/state-management">State Management</a></li>
             </ul>
           </div>
 
           <div className={styles.navSection}>
-            <h3>API Reference</h3>
+            <h3>Prophets Of Islam</h3>
             <ul>
-              <li><a href="/api/functions">Functions</a></li>
-              <li><a href="/api/hooks">Hooks</a></li>
-              <li><a href="/api/components">Components</a></li>
+            <li><Link to="/prophettimeline">Family Tree Of Prophets</Link></li>
             </ul>
           </div>
 
           <div className={styles.navSection}>
-            <h3>Advanced</h3>
+            <h3>Recommended Resources</h3>
             <ul>
-              <li><a href="/advanced/performance">Performance</a></li>
-              <li><a href="/advanced/security">Security</a></li>
-              <li><a href="/advanced/deployment">Deployment</a></li>
+          
             </ul>
           </div>
         </nav>

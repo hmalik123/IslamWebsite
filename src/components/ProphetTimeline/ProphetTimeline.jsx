@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
+import "./ProphetTimeline.module.css";
 
 const ProphetTimeline = () => {
     const graphRef = useRef();
     const [selectedProphet, setSelectedProphet] = useState(null);
     const [dimensions, setDimensions] = useState({
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight - 60
     });
 
     // Group descriptions for the legend

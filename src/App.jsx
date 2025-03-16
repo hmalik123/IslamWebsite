@@ -9,7 +9,7 @@ function App() {
       <div className="app">
         <Navbar />  
         <Routes>
-          <Route path="/" element={<ProphetTimeline />} />
+          <Route path="/prophettimeline" element={<ProphetTimeline />} />
         </Routes>
       </div>
     </Router>
