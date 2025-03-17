@@ -7,6 +7,7 @@ import SearchIcon from '../../assets/Searchicon.png';
 import IslamicLogo from '../../assets/IslamicLogo.png';
 import ProphetTimeline from '../ProphetTimeline/Prophettimeline';
 
+
 const Navbar = () => {
   // Initialize dark mode from localStorage or default to false
   const [darkMode, setDarkMode] = useState(() => {
@@ -84,7 +85,7 @@ const Navbar = () => {
           <div className={styles.navSection}>
             <h3>What is Islam ?</h3>
             <ul>
-              <li className={styles.active}><a href="/introduction">Abrahamic Religion</a></li>
+            <li><Link to="/abrahamicreligion">Abrahamic Religion</Link></li>
               <li><a href="/installation">Islam demographics</a></li>
               <li><a href="/quick-start">Quick Start</a></li>
             </ul>

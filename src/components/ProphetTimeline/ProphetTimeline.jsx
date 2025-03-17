@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
-import "./ProphetTimeline.module.css";
+import styles from "./ProphetTimeline.module.css";
 
 const ProphetTimeline = () => {
     const graphRef = useRef();
     const [selectedProphet, setSelectedProphet] = useState(null);
     const [dimensions, setDimensions] = useState({
         width: window.innerWidth,
-        height: window.innerHeight - 60
+        height: window.innerHeight
     });
 
     // Group descriptions for the legend
@@ -50,11 +50,18 @@ const ProphetTimeline = () => {
     useEffect(() => {
         // Handle window resize
         const handleResize = () => {
+            // Calculate the correct dimensions based on the navbar and sidebar
+            const topNavHeight = 60;
+            const sideNavWidth = window.innerWidth > 768 ? 250 : 0;
+
             setDimensions({
-                width: window.innerWidth,
-                height: window.innerHeight
+                width: window.innerWidth - sideNavWidth,
+                height: window.innerHeight - topNavHeight
             });
         };
+
+        // Call it once to set initial dimensions
+        handleResize();
 
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
@@ -144,8 +151,9 @@ const ProphetTimeline = () => {
 
         // Add title
         svg.append("text")
+            .attr("class", "timeline-title")
             .attr("x", width / 2)
-            .attr("y", 25)
+            .attr("y", 30)
             .attr("text-anchor", "middle")
             .attr("fill", "#ffffff")
             .attr("font-size", "24px")
@@ -283,27 +291,28 @@ const ProphetTimeline = () => {
         // Add legend
         const legend = svg.append("g")
             .attr("class", "legend")
-            .attr("transform", `translate(${width - 170}, 50)`);
+            .attr("transform", `translate(${width - 200}, 80)`);
 
         const legendItems = Object.entries(colors);
 
         legendItems.forEach(([group, color], i) => {
             const legendItem = legend.append("g")
-                .attr("transform", `translate(0, ${i * 25})`);
-
+                .attr("transform", `translate(0, ${i * 30})`);
+        
             legendItem.append("rect")
                 .attr("width", 15)
                 .attr("height", 15)
                 .attr("rx", 7.5)
                 .attr("fill", color);
-
+        
             legendItem.append("text")
-                .attr("x", 20)
+                .attr("class", "legend-text")
+                .attr("x", 25)
                 .attr("y", 12.5)
                 .attr("fill", "white")
+                .attr("font-size", "14px")
                 .text(groupDescriptions[group]);
         });
-
         // Add reset zoom button
         const resetButton = svg.append("g")
             .attr("class", "reset-button")
@@ -350,7 +359,11 @@ const ProphetTimeline = () => {
     }, [dimensions, selectedProphet]);
 
     return (
-        <div ref={graphRef} style={{ width: "100%", height: "100vh", background: "#1a1a1a" }}></div>
+        <div
+            ref={graphRef}
+            className={styles.graphContainer}
+        >
+        </div>
     );
 };
 
