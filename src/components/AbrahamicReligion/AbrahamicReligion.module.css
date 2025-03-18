@@ -2,24 +2,27 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 10%;
-  
+  height: 100%;
+  background: #1a1a1a;
 }
 
-.container {
-  width: 100%;
-  min-height: 100vh;
+.AbrahamicContainer {
+  width: 88%;
   padding: 2rem;
   font-family: 'Arial', sans-serif;
-  color: #333;
+  color: #e0e0e0;
   box-sizing: border-box;
-  
+  margin-top: 1600px;
+  /* Fix positioning */
+  position: relative;
+  left: 250px; /* Aligns with the sidebar width */
+  background: #1a1a1a;
 }
 
 .mainTitle {
   text-align: center;
   margin-bottom: 2rem;
-  color: #22577A;
+  color: #5D8CAE;
   font-size: 2.5rem;
 }
 
@@ -29,197 +32,229 @@ html, body {
   width: 100%;
 }
 
-  
-  .timeline {
-    height: 6px;
-    background-color: #ccc;
-    position: relative;
-    margin: 3rem 0;
+.timeline {
+  height: 6px;
+  background-color: #444;
+  position: relative;
+  margin: 3rem 0;
+}
+
+
+.timelineMarker {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: -7px;
+  display: flex;
+  justify-content: center;
+  z-index: 10; /* Ensure markers are above the line */
+}
+
+.timelineMarker span {
+  position: absolute;
+  top: -30px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  color: #e0e0e0;
+}
+
+.judaismMarker {
+  left: 10%;
+  background-color: #ae5d5d;
+}
+
+.christianityMarker {
+  left: 40%;
+  background-color: #665dae;
+}
+
+.islamMarker {
+  left: 70%;
+  background-color: #1A936F;
+  width: 26px;
+  height: 26px;
+  top: -10px;
+}
+
+.islamMarker span {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* New section container styles */
+.sectionContainer {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 2rem 0;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+}
+
+.sectionTitle {
+  margin: 0;
+  padding: 1.2rem 2rem;
+  background-color: #1a1a1a;
+  color: #5D8CAE;
+  font-size: 1.8rem;
+  font-weight: 600;
+  border-bottom: 1px solid #333;
+}
+
+/* Special styling for Islam section title */
+.sectionContainer:nth-child(5) .sectionTitle {
+  color: #1A936F;
+  border-bottom-color: #1A936F;
+  border-bottom-width: 3px;
+}
+
+.sectionContent {
+  padding: 2rem;
+  background-color: #1a1a1a;
+  min-height: 100px;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+.subtitle {
+  color: #5D8CAE;
+  margin-top: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.timeline {
+  font-style: italic;
+  color: #aaa;
+}
+
+.emphasizedContent {
+  position: relative;
+  border-left: 4px solid #1A936F;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  background-color: rgba(26, 147, 111, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 0 6px 6px 0;
+}
+
+.keyPoints {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.keyPoints li {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.keyPoints li:before {
+  content: "•";
+  color: #1A936F;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+.connectionText {
+  line-height: 1.6;
+}
+
+.islamFeature {
+  background-color: #242424;
+  border-left: 4px solid #1A936F;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Cleaner quote box */
+.quoteBox {
+  margin: 0 2rem 2rem;
+  padding: 2rem 2.5rem;
+  background-color: #242424;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.quoteBox blockquote {
+  margin: 0;
+  font-style: italic;
+  color: #bbb;
+  line-height: 1.7;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.quoteBox blockquote:before {
+  content: '"';
+  font-size: 4rem;
+  color: #1A936F;
+  opacity: 0.3;
+  position: absolute;
+  left: -1rem;
+  top: -1.5rem;
+}
+
+.quoteBox cite {
+  display: block;
+  margin-top: 1.5rem;
+  text-align: right;
+  font-style: normal;
+  font-weight: bold;
+  color: #1A936F;
+}
+
+/* Add smooth scroll behavior for section navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Adjust for the layout with sidebar when visible */
+@media (min-width: 769px) {
+  .mainContent .AbrahamicContainer {
+    /* Adjust to account for the sidebar */
+    margin-left: 0;
+    width: 100%;
+    background: #1a1a1a;
   }
-  
-  .timelineMarker {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    top: -7px;
-    display: flex;
-    justify-content: center;
-  }
-  
+}
+
+@media (max-width: 768px) {
   .timelineMarker span {
-    position: absolute;
-    top: -30px;
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
-  
-  .judaismMarker {
-    left: 10%;
-    background-color: #5D8CAE;
-  }
-  
-  .christianityMarker {
-    left: 40%;
-    background-color: #5D8CAE;
-  }
-  
-  .islamMarker {
-    left: 70%;
-    background-color: #1A936F;
-    width: 26px;
-    height: 26px;
-    top: -10px;
-  }
-  
-  .islamMarker span {
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-  
-  .tabContainer {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .tabs {
-    display: flex;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .tab {
-    flex: 1;
-    padding: 1rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-  }
-  
-  .tab:hover {
-    background-color: #e9e9e9;
-  }
-  
-  .tab.active {
-    background-color: #fff;
-    font-weight: bold;
-    border-bottom: 3px solid #22577A;
-  }
-  
-  .tab[data-religion="islam"].active {
-    border-bottom-color: #1A936F;
-  }
-  
-  .contentArea {
-    padding: 2rem;
-    background-color: #fff;
-    min-height: 300px;
-  }
-  
-  .title {
-    margin-top: 0;
-    color: #22577A;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5rem;
-  }
-  
-  .subtitle {
-    color: #22577A;
-    margin-top: 1.5rem;
-  }
-  
-  .timeline {
-    font-style: italic;
-    color: #666;
-  }
-  
-  .emphasizedContent {
-    position: relative;
-    border-left: 4px solid #1A936F;
-    padding-left: 1.5rem;
-  }
-  
-  .keyPoints {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .keyPoints li {
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-  }
-  
-  .keyPoints li:before {
-    content: "•";
-    color: #1A936F;
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-  }
-  
-  .connectionText {
-    line-height: 1.6;
+    transform: rotate(-45deg);
+    transform-origin: left top;
   }
   
   .islamFeature {
-    background-color: #f8f8f8;
-    border-left: 4px solid #1A936F;
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-radius: 0 8px 8px 0;
+    padding: 1rem;
   }
   
-  .quoteBox {
-    margin: 2rem 0;
-    padding: 2rem;
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    position: relative;
+  /* Adjust for mobile view with hidden sidebar */
+  .AbrahamicContainer {
+    width: 100%;
+    box-sizing: border-box;
+    /* Reset positioning for mobile */
+    position: static;
+    left: auto;
+    /* Ensure no horizontal scrolling */
+    overflow-x: hidden;
+    padding: 1rem;
+    background: #1a1a1a;
   }
   
-  .quoteBox blockquote {
-    margin: 0;
-    font-style: italic;
-    color: #444;
-    line-height: 1.6;
-    position: relative;
-    padding-left: 2rem;
+  .sectionTitle {
+    padding: 1rem;
+    font-size: 1.5rem;
+    background: #1a1a1a;
   }
   
-  .quoteBox blockquote:before {
-    content: '"';
-    font-size: 4rem;
-    color: #1A936F;
-    opacity: 0.3;
-    position: absolute;
-    left: -1rem;
-    top: -1.5rem;
+  .sectionContent {
+    padding: 1rem;
+    background: #1a1a1a;
   }
-  
-  .quoteBox cite {
-    display: block;
-    margin-top: 1rem;
-    text-align: right;
-    font-style: normal;
-    font-weight: bold;
-    color: #1A936F;
-  }
-  
-  @media (max-width: 768px) {
-    .tabs {
-      flex-direction: column;
-    }
-    
-    .timelineMarker span {
-      transform: rotate(-45deg);
-      transform-origin: left top;
-    }
-    
-    .islamFeature {
-      padding: 1rem;
-    }
-  }
+}

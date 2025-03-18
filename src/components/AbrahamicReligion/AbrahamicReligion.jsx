@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './AbrahamicReligion.module.css';
 
 const AbrahamicReligion = () => {
-  const [activeTab, setActiveTab] = useState('islam');
-
   const religions = {
     overview: {
       title: "Abrahamic Religions",
@@ -35,7 +33,7 @@ const AbrahamicReligion = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.AbrahamicContainer}>
       <h1 className={styles.mainTitle}>The Family of Abrahamic Religions</h1>
       
       <div className={styles.timelineContainer}>
@@ -46,79 +44,69 @@ const AbrahamicReligion = () => {
         </div>
       </div>
 
-      <div className={styles.tabContainer}>
-        <div className={styles.tabs}>
-          <button 
-            className={`${styles.tab} ${activeTab === 'overview' ? styles.active : ''}`}
-            onClick={() => setActiveTab('overview')}
-          >
-            Overview
-          </button>
-          <button 
-            className={`${styles.tab} ${activeTab === 'judaism' ? styles.active : ''}`}
-            onClick={() => setActiveTab('judaism')}
-          >
-            Judaism
-          </button>
-          <button 
-            className={`${styles.tab} ${activeTab === 'christianity' ? styles.active : ''}`}
-            onClick={() => setActiveTab('christianity')}
-          >
-            Christianity
-          </button>
-          <button 
-            className={`${styles.tab} ${activeTab === 'islam' ? styles.active : ''}`}
-            onClick={() => setActiveTab('islam')}
-          >
-            Islam
-          </button>
+      {/* Overview Section */}
+      <section className={styles.sectionContainer}>
+        <h2 className={styles.sectionTitle}>{religions.overview.title}</h2>
+        <div className={styles.sectionContent}>
+          <p>{religions.overview.content}</p>
         </div>
+      </section>
 
-        <div className={styles.contentArea}>
-          <h2 className={styles.title}>{religions[activeTab].title}</h2>
-          {activeTab === 'islam' ? (
-            <div className={styles.emphasizedContent}>
-              <p>{religions[activeTab].content}</p>
-              <p className={styles.timeline}><strong>Timeline:</strong> {religions[activeTab].timeline}</p>
-              
-              <h3 className={styles.subtitle}>Key Beliefs and Practices</h3>
-              <ul className={styles.keyPoints}>
-                {religions[activeTab].keyBeliefs?.map((belief, index) => (
-                  <li key={index}>{belief}</li>
-                ))}
-              </ul>
-              
-              <h3 className={styles.subtitle}>Connection to Abrahamic Tradition</h3>
-              <p className={styles.connectionText}>{religions[activeTab].connection}</p>
-              
-              <div className={styles.islamFeature}>
-                <h3>Islam as the Completion of Abrahamic Tradition</h3>
-                <p>
-                  In Islamic theology, Islam is viewed as the restoration of the original, uncorrupted monotheistic faith of Abraham. 
-                  Muslims believe that Judaism and Christianity originated from divine revelations but that their scriptures were 
-                  altered over time, while the Quran remains preserved in its original form. The Prophet Muhammad is considered the 
-                  final messenger in a long line of prophets that includes prominent figures from Jewish and Christian traditions.
-                </p>
-              </div>
+      {/* Judaism Section */}
+      <section className={styles.sectionContainer}>
+        <h2 className={styles.sectionTitle}>{religions.judaism.title}</h2>
+        <div className={styles.sectionContent}>
+          <p>{religions.judaism.content}</p>
+          <p className={styles.timeline}><strong>Timeline:</strong> {religions.judaism.timeline}</p>
+        </div>
+      </section>
+
+      {/* Christianity Section */}
+      <section className={styles.sectionContainer}>
+        <h2 className={styles.sectionTitle}>{religions.christianity.title}</h2>
+        <div className={styles.sectionContent}>
+          <p>{religions.christianity.content}</p>
+          <p className={styles.timeline}><strong>Timeline:</strong> {religions.christianity.timeline}</p>
+        </div>
+      </section>
+
+      {/* Islam Section */}
+      <section className={styles.sectionContainer}>
+        <h2 className={styles.sectionTitle}>{religions.islam.title}</h2>
+        <div className={styles.sectionContent}>
+          <div className={styles.emphasizedContent}>
+            <p>{religions.islam.content}</p>
+            <p className={styles.timeline}><strong>Timeline:</strong> {religions.islam.timeline}</p>
+            
+            <h3 className={styles.subtitle}>Key Beliefs and Practices</h3>
+            <ul className={styles.keyPoints}>
+              {religions.islam.keyBeliefs?.map((belief, index) => (
+                <li key={index}>{belief}</li>
+              ))}
+            </ul>
+            
+            <h3 className={styles.subtitle}>Connection to Abrahamic Tradition</h3>
+            <p className={styles.connectionText}>{religions.islam.connection}</p>
+            
+            <div className={styles.islamFeature}>
+              <h3>Islam as the Completion of Abrahamic Tradition</h3>
+              <p>
+                In Islamic theology, Islam is viewed as the restoration of the original, uncorrupted monotheistic faith of Abraham. 
+                Muslims believe that Judaism and Christianity originated from divine revelations but that their scriptures were 
+                altered over time, while the Quran remains preserved in its original form. The Prophet Muhammad is considered the 
+                final messenger in a long line of prophets that includes prominent figures from Jewish and Christian traditions.
+              </p>
             </div>
-          ) : (
-            <p>{religions[activeTab].content}</p>
-          )}
-          
-          {activeTab !== 'overview' && activeTab !== 'islam' && (
-            <p className={styles.timeline}><strong>Timeline:</strong> {religions[activeTab].timeline}</p>
-          )}
+          </div>
         </div>
-      </div>
 
-      {activeTab === 'islam' && (
         <div className={styles.quoteBox}>
           <blockquote>
             "Say, 'We believe in Allah and what has been revealed to us and what was revealed to Abraham, Ishmael, Isaac, Jacob, and the Descendants, and what was given to Moses and Jesus and what was given to the prophets from their Lord. We make no distinction between any of them, and we are Muslims [submitting] to Him.'"
             <cite>— Quran 2:136</cite>
           </blockquote>
         </div>
-      )}
+      </section>
     </div>
   );
 };
