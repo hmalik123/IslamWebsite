@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ProphetTimeline from './components/ProphetTimeline/Prophettimeline'
 import Navbar from './components/Navbar/Navbar'  
 import AbrahamicReligion from './components/AbrahamicReligion/AbrahamicReligion'
+import IslamDemographics from './components/IslamDemographics/IslamDemographics'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/prophettimeline" element={<ProphetTimeline />} />
           <Route path="/abrahamicreligion" element={<AbrahamicReligion />} />
+          <Route path="/islamdemographics" element={<IslamDemographics />} />
         </Routes>
       </div>
     </Router>

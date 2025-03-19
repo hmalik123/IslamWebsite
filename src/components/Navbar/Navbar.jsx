@@ -86,7 +86,7 @@ const Navbar = () => {
             <h3>What is Islam ?</h3>
             <ul>
             <li><Link to="/abrahamicreligion">Abrahamic Religion</Link></li>
-              <li><a href="/installation">Islam demographics</a></li>
+              <li><a href="/islamdemographics">Islam demographics</a></li>
               <li><a href="/quick-start">Quick Start</a></li>
             </ul>
           </div>
