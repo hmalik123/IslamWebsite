@@ -87,14 +87,14 @@ const Navbar = () => {
             <ul>
             <li><Link to="/abrahamicreligion">Abrahamic Religion</Link></li>
               <li><a href="/islamdemographics">Islam demographics</a></li>
-              <li><a href="/quick-start">Quick Start</a></li>
+              <li><a href="/quick-start">Islam</a></li>
             </ul>
           </div>
 
           <div className={styles.navSection}>
             <h3>Core beliefs</h3>
             <ul>
-              <li><a href="/concepts/architecture">Architecture</a></li>
+              <li><a href="/concepts/architecture">5 Pillars</a></li>
             </ul>
           </div>
 

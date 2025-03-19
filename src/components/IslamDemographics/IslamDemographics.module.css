@@ -1,8 +1,8 @@
 .DemographicsContainer {
     position: relative;
     font-family: Arial, sans-serif;
-    width: 100%;
-    max-width: 1500px;
+    width: 119.5%;
+    max-width: 3500px;
     margin: 0 auto;
     overflow: hidden;
     right: -300px;
@@ -13,7 +13,7 @@
     margin-bottom: 20px;
     color: #f7f2f2;
     font-size: 24px;
-    margin-left: 100px;
+    margin-left: -160px;
   }
   
   .mapContainer {
@@ -27,12 +27,12 @@
     display: block;
     width: 100%;
     height: 100%;
-    background-color: #1a1a1a; /* Light blue background for the ocean */
+    background-color: #1a1a1a; /* Dark background for the ocean */
   }
    
   /* Tooltip */
   .tooltip {
-    position: fixed; /* Changed from absolute to fixed to prevent container shifts */
+    position: fixed; /* Fixed positioning to prevent container shifts */
     padding: 10px;
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid #aaa;
@@ -53,7 +53,7 @@
     font-style: italic;
   }
   
-  /* These classes are no longer used in the JS file, kept for reference only */
+  /* These classes are kept for reference only */
   .majority {
     fill: #008000;  /* Green for majority Muslim countries */
   }

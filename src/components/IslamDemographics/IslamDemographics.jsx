@@ -159,7 +159,7 @@ const IslamDemographics = () => {
         .attr('class', styles.tooltip)
         .style('opacity', 0)
         .style('position', 'fixed')
-        .style('pointer-events', 'none') // FIX 2: Make tooltip non-interactive
+        .style('pointer-events', 'none') // Make tooltip non-interactive
         .style('background-color', 'white')
         .style('border', '1px solid black')
         .style('border-radius', '5px')
@@ -208,7 +208,7 @@ const IslamDemographics = () => {
         .style('stroke', '#fff')
         .style('stroke-width', '0.5px')
         .on('mouseover', (event, d) => {
-          // FIX 1: Hide any existing tooltips first
+          // Hide any existing tooltips first
           tooltip.transition().duration(0).style('opacity', 0);
           
           // Hover effect
@@ -219,7 +219,7 @@ const IslamDemographics = () => {
             .style('stroke-width', '1px');
             
           const countryName = countryNames[d.id];
-          // FIX 1: Always show a tooltip with available information
+          // Always show a tooltip with available information
           let tooltipContent = '';
           
           if (countryName) {
@@ -249,7 +249,7 @@ const IslamDemographics = () => {
             .style('opacity', 0.9);
         })
         .on('mousemove', (event) => {
-          // FIX 2: Update tooltip position on mouse move
+          // Update tooltip position on mouse move
           tooltip
             .style('left', (event.clientX + 10) + 'px')
             .style('top', (event.clientY - 28) + 'px');
@@ -278,9 +278,9 @@ const IslamDemographics = () => {
             .style('opacity', 0);
         });
 
-      // Add legend
+      // Add legend - Moved to top left with more space for map visibility
       const legend = svg.append('g')
-        .attr('transform', 'translate(40, 40)')
+        .attr('transform', 'translate(20, 20)') // Move to very top left
         .style('pointer-events', 'none');
 
       // Legend entries with updated colors
@@ -288,16 +288,16 @@ const IslamDemographics = () => {
         { color: '#008000', label: 'Muslim Majority (>50%)' },
         { color: '#0066cc', label: 'Significant Muslim Population (10-50%)' },
         { color: '#800080', label: 'Notable Muslim Population (<10%)' },
-        { color: '#ff0000', label: 'Less than 1%' }, // Changed from red to light gray
+        { color: '#ff0000', label: 'Less than 1%' },
       ];
 
-      // Legend background
+      // Legend background - Made more compact
       legend.append('rect')
         .attr('x', -10)
-        .attr('y', -25)
+        .attr('y', -10)
         .attr('width', 300)
-        .attr('height', 110) 
-        .style('fill', 'rgba(255, 255, 255, 0.9)')
+        .attr('height', 95) // Reduced height
+        .style('fill', 'rgba(255, 255, 255, 0.8)') // More transparent
         .style('rx', '5')
         .style('ry', '5')
         .style('stroke', '#333')
@@ -306,114 +306,40 @@ const IslamDemographics = () => {
       // Legend title
       legend.append('text')
         .attr('x', 0)
-        .attr('y', -5)
+        .attr('y', 5) // Adjusted position
         .style('font-weight', 'bold')
-        .style('font-size', '16px')
+        .style('font-size', '14px') // Smaller text
         .text('Muslim Population');
 
-      // Draw legend with inline styles
+      // Draw legend with inline styles - More compact
       legendData.forEach((item, i) => {
         // Color box
         legend.append('rect')
           .attr('x', 0)
-          .attr('y', i * 20)
-          .attr('width', 15)
-          .attr('height', 15)
+          .attr('y', i * 18 + 10) // Reduced spacing between items
+          .attr('width', 12) // Smaller color box
+          .attr('height', 12) // Smaller color box
           .style('fill', item.color)
           .style('stroke', '#000')
           .style('stroke-width', '0.5px');
 
         // Label
         legend.append('text')
-          .attr('x', 20)
-          .attr('y', i * 20 + 12)
-          .style('font-size', '14px')
+          .attr('x', 18) // Adjusted position
+          .attr('y', i * 18 + 20) // Reduced spacing between items
+          .style('font-size', '12px') // Smaller text
           .text(item.label);
       });
-
-      // Add zoom controls
-      const zoomControls = svg.append('g')
-        .attr('transform', 'translate(40, 160)');
-
-      // Zoom control background
-      zoomControls.append('rect')
-        .attr('x', -10)
-        .attr('y', -10)
-        .attr('width', 70)
-        .attr('height', 90)
-        .style('fill', 'rgba(255, 255, 255, 0.9)')
-        .style('rx', '5')
-        .style('ry', '5')
-        .style('stroke', '#333')
-        .style('stroke-width', '1px');
-
-      // Zoom in button
-      const zoomIn = zoomControls.append('g')
+      
+      // Add reset view button - Small text link at the bottom
+      svg.append('text')
+        .attr('x', 20)
+        .attr('y', height - 20)
+        .attr('text-anchor', 'start')
+        .style('font-size', '12px')
+        .style('fill', 'white')
         .style('cursor', 'pointer')
-        .on('click', () => {
-          if (zoomRef.current) {
-            svg.transition().duration(300).call(zoomRef.current.scaleBy, 1.3);
-          }
-        });
-
-      zoomIn.append('circle')
-        .attr('cx', 25)
-        .attr('cy', 15)
-        .attr('r', 15)
-        .style('fill', '#f8f8f8')
-        .style('stroke', '#333')
-        .style('stroke-width', '1px');
-
-      zoomIn.append('text')
-        .attr('x', 25)
-        .attr('y', 20)
-        .attr('text-anchor', 'middle')
-        .style('font-size', '18px')
-        .style('font-weight', 'bold')
-        .text('+');
-
-      // Zoom out button
-      const zoomOut = zoomControls.append('g')
-        .style('cursor', 'pointer')
-        .on('click', () => {
-          if (zoomRef.current) {
-            svg.transition().duration(300).call(zoomRef.current.scaleBy, 0.7);
-          }
-        });
-
-      zoomOut.append('circle')
-        .attr('cx', 25)
-        .attr('cy', 55)
-        .attr('r', 15)
-        .style('fill', '#f8f8f8')
-        .style('stroke', '#333')
-        .style('stroke-width', '1px');
-
-      zoomOut.append('text')
-        .attr('x', 25)
-        .attr('y', 60)
-        .attr('text-anchor', 'middle')
-        .style('font-size', '20px')
-        .style('font-weight', 'bold')
-        .text('−');
-        
-      // Add reset view button
-      const resetView = zoomControls.append('g')
-        .style('cursor', 'pointer')
-        .on('click', () => {
-          if (zoomRef.current) {
-            svg.transition().duration(300).call(zoomRef.current.transform, d3.zoomIdentity);
-          }
-        });
-
-      // Add a home/reset button below the zoom buttons
-      zoomControls.append('text')
-        .attr('x', 25)
-        .attr('y', 90)
-        .attr('text-anchor', 'middle')
-        .style('font-size', '11px')
-        .style('cursor', 'pointer')
-        .text('Reset view')
+        .text('Reset View')
         .on('click', () => {
           if (zoomRef.current) {
             svg.transition().duration(300).call(zoomRef.current.transform, d3.zoomIdentity);
@@ -439,7 +365,7 @@ const IslamDemographics = () => {
         <div ref={tooltipRef}></div>
       </div>
       <div className={styles.instructions}>
-        Use mouse wheel to zoom in/out, or the +/- controls. Click and drag to pan. Click "Reset view" to return to the starting view.
+        Use mouse wheel to zoom in/out. Click and drag to pan. Click "Reset View" in the bottom left to return to the starting view.
       </div>
     </div>
   );
